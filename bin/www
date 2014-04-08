@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+require('coffee-script/register');
+
+var debug = require('debug')('apime')
+  , path = require('path')
+  , app = require(path.resolve('config', 'app'));
+
+app.set('port', process.env.PORT || 3000);
+
+var server = app.listen(app.get('port'), function() {
+  debug('Listening on port ' + server.address().port);
+});
